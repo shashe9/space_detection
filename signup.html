@@ -5,21 +5,23 @@
     <title>Sign Up - Satellite Tracker</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .auth-container { display: flex; justify-content: center; align-items: center; height: 100vh; background: #1a1a1a; }
-        .auth-card { background: white; padding: 30px; border-radius: 8px; width: 350px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; box-sizing: border-box; }
-        button { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        .link { margin-top: 15px; font-size: 14px; color: #555; }
+        .auth-wrapper { display: flex; justify-content: center; align-items: center; height: 100vh; background: var(--bg-dark); }
+        .auth-card { background: var(--sidebar-bg); padding: 40px; border-radius: 16px; width: 350px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
+        .auth-card h2 { color: var(--accent-cyan); margin-bottom: 20px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; background: rgba(15, 23, 42, 0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; box-sizing: border-box; }
+        button#signupBtn { width: 100%; padding: 12px; background: #28a745; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        .link { margin-top: 20px; font-size: 14px; color: var(--text-muted); }
+        .link a { color: var(--primary-color); text-decoration: none; }
     </style>
 </head>
 <body>
-    <div class="auth-container">
+    <div class="auth-wrapper">
         <div class="auth-card">
-            <h2>🛰️ Create Account</h2>
+            <h2>🚀 Create Account</h2>
             <input type="email" id="email" placeholder="Email Address">
             <input type="password" id="password" placeholder="Password (min 6 chars)">
             <button id="signupBtn">Sign Up</button>
-            <p id="error" style="color:red; font-size: 12px;"></p>
+            <p id="error" style="color:var(--danger); font-size: 12px; margin-top: 10px;"></p>
             <div class="link">Already have an account? <a href="login.html">Login</a></div>
         </div>
     </div>
@@ -32,9 +34,9 @@
             apiKey: "AIzaSyA_3-4U2ZRbfDD1s5AWvEmIFbs3_dX_E48",
             authDomain: "authbase-c00b6.firebaseapp.com",
             projectId: "authbase-c00b6",
-  storageBucket: "authbase-c00b6.firebasestorage.app",
-  messagingSenderId: "128729816046",
-  appId: "1:128729816046:web:f59486ad9704ea040d8cff"
+            storageBucket: "authbase-c00b6.firebasestorage.app",
+            messagingSenderId: "128729816046",
+            appId: "1:128729816046:web:f59486ad9704ea040d8cff"
         };
 
         const app = initializeApp(firebaseConfig);

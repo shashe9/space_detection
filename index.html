@@ -9,37 +9,30 @@
 </head>
 <body>
 
-    <div id="userInfo" style="margin-top:20px; border-top:1px solid #ddd; padding-top:10px;">
-    <p style="font-size:12px; color:#666;" id="userEmailText">Not logged in</p>
-    <button id="logoutBtn" style="width:100%; padding:8px; background:#ff4444; color:white; border:none; border-radius:4px; cursor:pointer;">Logout</button>
-</div>
-
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyA_3-4U2ZRbfDD1s5AWvEmIFbs3_dX_E48",
-  authDomain: "authbase-c00b6.firebaseapp.com",
-  projectId: "authbase-c00b6",
-  storageBucket: "authbase-c00b6.firebasestorage.app",
-  messagingSenderId: "128729816046",
-  appId: "1:128729816046:web:f59486ad9704ea040d8cff"
+        authDomain: "authbase-c00b6.firebaseapp.com",
+        projectId: "authbase-c00b6",
+        storageBucket: "authbase-c00b6.firebasestorage.app",
+        messagingSenderId: "128729816046",
+        appId: "1:128729816046:web:f59486ad9704ea040d8cff"
     };
 
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    // Protection Guard
     onAuthStateChanged(auth, (user) => {
         if (!user) {
             window.location.href = "login.html"; 
         } else {
-            document.getElementById('userEmailText').innerText = "User: " + user.email;
+            document.getElementById('userEmailText').innerText = user.email;
         }
     });
 
-    // Logout Action
     document.getElementById('logoutBtn').addEventListener('click', () => {
         signOut(auth).then(() => window.location.href = "login.html");
     });
@@ -50,13 +43,21 @@
 <div class="container">
     <aside class="sidebar">
         <h3>Select Satellite</h3>
-        <select id="satelliteSelect"></select>
+        <div id="satelliteSelect"></div>
+        
         <h3>Orbit Analysis</h3>
         <p>Avg Altitude: <span id="avgAlt">–</span> m</p>
         <p>Avg Speed: <span id="avgSpeed">–</span> m/s</p>
         <p>Orbit Type: <span id="orbitType">–</span></p>
+        
         <h3>Time Control</h3>
         <input type="range" id="timeSlider" />
+
+        <div id="userInfo">
+            <h3>User Session</h3>
+            <p id="userEmailText"></p>
+            <button id="logoutBtn">Logout</button>
+        </div>
     </aside>
 
     <main class="main">
@@ -66,9 +67,13 @@
             <button class="plot-btn" data-plot="speed">Speed</button>
             <button class="plot-btn" data-plot="correlation">Correlation</button>
             <button class="plot-btn" data-plot="orbit3d">3D View</button>
+            
+            <a href="https://rvcoggbt5xf9bswb3suecx.streamlit.app/" target="_blank" class="plot-btn external-link">
+                External Tracker 🛰️
+            </a>
         </div>
         <div id="plotContainer" class="chart"></div>
-        <div id="threeContainer" style="display:none; height: 600px;"></div>
+        <div id="threeContainer" style="display:none;"></div>
     </main>
 </div>
 
@@ -80,7 +85,6 @@
   }
 }
 </script>
-
 <script type="module" src="script.js"></script>
 
 </body>

@@ -1,74 +1,136 @@
+:root {
+    --primary-color: #0b79ff;
+    --bg-dark: #0f172a;
+    --sidebar-bg: #1e293b;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-cyan: #00f2ff;
+    --danger: #ef4444;
+}
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f7fa;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-main);
+    overflow: hidden;
 }
 
 h1 {
     text-align: center;
-    margin: 15px 0;
+    margin: 0;
+    padding: 20px 0;
+    font-size: 1.5rem;
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .container {
     display: flex;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 65px);
 }
 
 .sidebar {
-    width: 260px;
-    background: #ffffff;
-    padding: 15px;
-    border-right: 1px solid #ddd;
+    width: 280px;
+    background: var(--sidebar-bg);
+    padding: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .sidebar h3 {
-    margin-top: 20px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent-cyan);
+    margin-bottom: 5px;
+}
+
+#satelliteSelect {
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 200px;
 }
 
 .main {
     flex: 1;
-    padding: 15px;
+    padding: 20px;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
 }
 
 .plot-nav {
     display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 .plot-btn {
-    padding: 8px 14px;
-    border: none;
-    background: #e0e0e0;
+    padding: 10px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255,255,255,0.05);
+    color: var(--text-muted);
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 .plot-btn.active {
-    background: #0b79ff;
+    background: var(--primary-color);
     color: white;
 }
 
-.chart {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 6px;
+.plot-nav a.external-link {
+    background: rgba(0, 242, 255, 0.1);
+    border: 1px dashed var(--accent-cyan);
+    color: var(--accent-cyan);
 }
 
-#plotContainer {
-    width: 100%;
-    height: 600px;
-    position: relative;
+.plot-nav a.external-link:hover {
+    background: var(--accent-cyan);
+    color: var(--bg-dark);
 }
 
-#plotContainer canvas {
-    display: block;
+#plotContainer, #threeContainer {
+    width: 100%;
+    height: calc(100vh - 180px);
+    background: #000;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-#plotContainer,
-#threeContainer {
+#userInfo {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#userEmailText {
+    font-size: 12px;
+    color: var(--text-muted);
+    word-break: break-all;
+    margin-bottom: 10px;
+}
+
+#logoutBtn {
     width: 100%;
-    height: 600px;
-    background: black;
+    padding: 10px;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#logoutBtn:hover {
+    background: var(--danger);
+    color: white;
 }
