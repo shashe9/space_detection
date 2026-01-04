@@ -1,17 +1,18 @@
 :root {
-    --primary-color: #0b79ff;
-    --bg-dark: #0f172a;
-    --sidebar-bg: #1e293b;
-    --text-main: #f8fafc;
-    --text-muted: #94a3b8;
-    --accent-cyan: #00f2ff;
-    --danger: #ef4444;
+    --bg-black: #000000;
+    --card-dark: #0a0a0c;
+    --sidebar-bg: #050505;
+    --primary-emerald: #10b981;
+    --accent-indigo: #6366f1;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --border-subtle: rgba(255, 255, 255, 0.08);
 }
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: var(--bg-dark);
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: radial-gradient(circle at center, #0a0a0f 0%, #000000 100%);
     color: var(--text-main);
     overflow: hidden;
 }
@@ -19,118 +20,119 @@ body {
 h1 {
     text-align: center;
     margin: 0;
-    padding: 20px 0;
-    font-size: 1.5rem;
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 25px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-subtle);
 }
 
-.container {
-    display: flex;
-    height: calc(100vh - 65px);
-}
+.container { display: flex; height: calc(100vh - 75px); }
 
 .sidebar {
     width: 280px;
     background: var(--sidebar-bg);
-    padding: 20px;
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
 }
 
 .sidebar h3 {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    color: var(--accent-cyan);
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
     margin-bottom: 5px;
 }
 
-#satelliteSelect {
-    background: rgba(15, 23, 42, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    overflow-y: auto;
-    max-height: 200px;
+.sat-select-menu {
+    width: 100%;
+    padding: 12px;
+    background: var(--card-dark);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
 }
 
-.main {
-    flex: 1;
-    padding: 20px;
-    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
-}
+.main { flex: 1; padding: 25px; }
 
-.plot-nav {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
-}
+.plot-nav { display: flex; gap: 12px; margin-bottom: 25px; flex-wrap: wrap; }
 
 .plot-btn {
-    padding: 10px 18px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(255,255,255,0.05);
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
     color: var(--text-muted);
+    font-weight: 600;
+    font-size: 13px;
     cursor: pointer;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.3s;
+    transition: 0.3s ease;
     text-decoration: none;
-    font-size: 14px;
+}
+
+.plot-btn:hover { 
+    background: rgba(16, 185, 129, 0.1); 
+    color: var(--primary-emerald); 
+    border-color: var(--primary-emerald); 
 }
 
 .plot-btn.active {
-    background: var(--primary-color);
-    color: white;
+    background: var(--primary-emerald);
+    color: black;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    border-color: var(--primary-emerald);
 }
 
-.plot-nav a.external-link {
-    background: rgba(0, 242, 255, 0.1);
-    border: 1px dashed var(--accent-cyan);
-    color: var(--accent-cyan);
+.plot-btn.external-link { 
+    border-color: var(--accent-indigo); 
+    color: var(--accent-indigo) !important; 
 }
 
-.plot-nav a.external-link:hover {
-    background: var(--accent-cyan);
-    color: var(--bg-dark);
+.plot-btn.external-link:hover {
+    background: var(--accent-indigo);
+    color: white !important;
 }
 
 #plotContainer, #threeContainer {
     width: 100%;
-    height: calc(100vh - 180px);
-    background: #000;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: calc(100vh - 200px);
+    background: radial-gradient(circle at center, #0f172a 0%, #000000 100%);
+    border-radius: 24px;
+    border: 1px solid rgba(16, 185, 129, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    overflow: hidden;
 }
 
-#userInfo {
-    margin-top: auto;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-#userEmailText {
-    font-size: 12px;
-    color: var(--text-muted);
-    word-break: break-all;
-    margin-bottom: 10px;
+#userInfo { 
+    margin-top: auto; 
+    padding-top: 20px; 
+    border-top: 1px solid var(--border-subtle); 
 }
 
 #logoutBtn {
     width: 100%;
-    padding: 10px;
-    background: rgba(239, 68, 68, 0.1);
-    color: var(--danger);
-    border: 1px solid var(--danger);
-    border-radius: 8px;
+    padding: 12px;
+    background: transparent;
+    color: #ff4d4d;
+    border: 1px solid rgba(255, 77, 77, 0.3);
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s ease;
 }
 
-#logoutBtn:hover {
-    background: var(--danger);
-    color: white;
-}
+#logoutBtn:hover { background: #ff4d4d; color: white; border-color: #ff4d4d; }
