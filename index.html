@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <title>🛰️ Satellite Orbit Dashboard</title>
+    <title>Satellite Orbit Dashboard</title>
     <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
     <script src="https://unpkg.com/satellite.js/dist/satellite.min.js"></script>
     <link rel="stylesheet" href="style.css" />
@@ -38,24 +38,23 @@
     });
 </script>
 
-<h1>🛰️ Satellite Orbit Visualisation Dashboard</h1>
+<h1>Satellite Orbit Visualisation Dashboard</h1>
 
 <div class="container">
     <aside class="sidebar">
         <h3>Select Satellite</h3>
-        <div id="satelliteSelect"></div>
+        <select id="satelliteSelectMenu" class="sat-select-menu">
+            <option>Loading satellites...</option>
+        </select>
         
         <h3>Orbit Analysis</h3>
         <p>Avg Altitude: <span id="avgAlt">–</span> m</p>
         <p>Avg Speed: <span id="avgSpeed">–</span> m/s</p>
         <p>Orbit Type: <span id="orbitType">–</span></p>
-        
-        <h3>Time Control</h3>
-        <input type="range" id="timeSlider" />
 
         <div id="userInfo">
             <h3>User Session</h3>
-            <p id="userEmailText"></p>
+            <p id="userEmailText" style="word-break: break-all; font-weight: bold; color: var(--text-main);"></p>
             <button id="logoutBtn">Logout</button>
         </div>
     </aside>
@@ -66,12 +65,10 @@
             <button class="plot-btn" data-plot="altitude">Altitude</button>
             <button class="plot-btn" data-plot="speed">Speed</button>
             <button class="plot-btn" data-plot="correlation">Correlation</button>
-            <button class="plot-btn" data-plot="orbit3d">3D View</button>
-            
-            <a href="https://rvcoggbt5xf9bswb3suecx.streamlit.app/" target="_blank" class="plot-btn external-link">
-                External Tracker 🛰️
-            </a>
+            <button class="plot-btn" data-plot="orbit3d">3D coverage</button>
+            <a href="https://rvcoggbt5xf9bswb3suecx.streamlit.app/" target="_blank" class="plot-btn external-link">Collision Risk Analysis</a>
         </div>
+
         <div id="plotContainer" class="chart"></div>
         <div id="threeContainer" style="display:none;"></div>
     </main>
@@ -85,6 +82,7 @@
   }
 }
 </script>
+
 <script type="module" src="script.js"></script>
 
 </body>
